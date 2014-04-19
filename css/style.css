@@ -819,6 +819,19 @@ margin-top: 0.5em;
     font-size: 1.2em;
 }
 
+#contact-figure > .nail+div
+{
+	position:relative;
+	top: 2em;
+}
+
+#contact-figure > figcaption
+{
+	position: absolute;
+	width:100%;
+	margin-left:-2em;
+	top:2em;
+}
 
 #photo-figure > .nail, #contact-figure > .nail
 {
