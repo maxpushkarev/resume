@@ -300,10 +300,7 @@ context.closePath();
 	};
 	
 	console.log('all content is loaded... I\'m ready to begin...');
-	
-	allContent.addClass('block-content');
 
-	
 	(function _showContent(content){
 		var delay = pushkarev.timeConstants.PSEUDO_LOAD;
 		setTimeout( function makeVisible(){
