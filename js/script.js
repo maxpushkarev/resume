@@ -301,7 +301,6 @@ context.closePath();
 	
 	console.log('all content is loaded... I\'m ready to begin...');
 	
-	jq('body').addClass('body-bg');
 	allContent.addClass('block-content');
 
 	
