@@ -141,7 +141,9 @@ createPage = function createPage(){
 	closeMainThing = jq('#pseudo-light-layer>#closeBtn'),
 	androidControls = jq('#android > .slider-panel > .controls > .moving-controls'),
 	ipadControls = jq('#ipad > .slider-panel > .controls > .moving-controls'),
-	animateInterval;
+	animateInterval,
+	initScrollPosition = jq(global.document).scrollTop(),
+	rootContent = jq('html,body');
 
 	function drawCnv(){
 	
@@ -342,7 +344,7 @@ context.closePath();
 	
 	
 	scrollTop.bind('click', function scrollTop(evt){
-				var rootDoc = scrollTop.cachedRootDoc = !scrollTop.cachedRootDoc ? jq('html,body') : scrollTop.cachedRootDoc;
+				var rootDoc = scrollTop.cachedRootDoc = !scrollTop.cachedRootDoc ? rootContent : scrollTop.cachedRootDoc;
 				evt.preventDefault();
 				rootDoc.animate({
 					scrollTop: 0
@@ -441,6 +443,11 @@ context.closePath();
             reset: true,
             init: true
           });
+	
+	
+	rootContent.animate({
+		scrollTop: ++initScrollPosition
+	},0);
 	
 	global.Pushkarev = pushkarev;
 };
