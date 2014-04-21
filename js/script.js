@@ -500,8 +500,6 @@ return result;
 
 fastAccessScripts['jquery'] = new JsContent('js/jquery-1.10.2.min.js');
 fastAccessScripts['scrollReveal'] = new JsContent('js/scrollReveal.js');
-fastAccessStyles['style'] = new CssContent('css/style.css');
-fastAccessStyles['googleFont'] = new CssContent('http://fonts.googleapis.com/css?family=Reenie+Beanie:regular');
 
 
 (function decorateLazyLoading(functions){
@@ -541,9 +539,7 @@ lazyload.css.apply(Pushkarev,[fastAccessStyles,,,Pushkarev]);
 (function createPageWhenEverithingLoaded(){
 
 	if(fastAccessScripts['jquery'].loaded && 
-		fastAccessScripts['scrollReveal'].loaded && 
-		fastAccessStyles['style'].loaded && 
-		fastAccessStyles['googleFont'].loaded)
+		fastAccessScripts['scrollReveal'].loaded)
 	{
 		createPage();
 	}
