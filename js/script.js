@@ -138,9 +138,16 @@ createPage = function createPage(){
 	nav = jq('nav ul'),
 	scrollTop = jq('#scroll-top'),
 	mainThing = jq('#main-thing'),
-	closeMainThing = jq('#pseudo-light-layer>#closeBtn'),
-	androidControls = jq('#android > .slider-panel > .controls > .moving-controls'),
-	ipadControls = jq('#ipad > .slider-panel > .controls > .moving-controls'),
+	closeMainThing = jq('#pseudo-light-layer')
+					.children('#closeBtn'),
+	androidControls = jq('#android')
+				.children('.slider-panel')
+				.children('.controls')
+				.children('.moving-controls'),
+	ipadControls = jq('#ipad')
+		.children('.slider-panel')
+		.children('.controls')
+		.children('.moving-controls'),
 	animateInterval,
 	initScrollPosition = jq(global.document).scrollTop(),
 	rootContent = jq('html,body');
@@ -392,7 +399,7 @@ context.closePath();
 			setTimeout(function(){
 				lightContent.addClass('content-show');	
 				animateInterval = setTimeout(function openCloseCat(){	
-					var movingCat = openCloseCat.cachedCat = !openCloseCat.cachedCat ? jq('#subscription #moving') : openCloseCat.cachedCat;
+					var movingCat = openCloseCat.cachedCat = !openCloseCat.cachedCat ? jq('#subscription').find('#moving') : openCloseCat.cachedCat;
 					movingCat.hasClass('rotated') ? movingCat.removeClass('rotated') : movingCat.addClass('rotated');			
 					animateInterval = setTimeout(openCloseCat,1500);
 				},1500);
