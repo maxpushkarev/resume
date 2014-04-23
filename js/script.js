@@ -480,27 +480,27 @@ global.document.getElementById('facebookG').style.display = 'block';
 JsContent.prototype = new Content(contentTypes.jsType); //the simpliest inheritance
 CssContent.prototype = new Content(contentTypes.cssType);
 Function.prototype.profilingCall = function profilingCall(){
-var startTime = (new Date()).getTime(),
-args = Array.prototype.slice.call(arguments),
+var args = Array.prototype.slice.call(arguments),
 context = args[0],
 args = Array.prototype.slice.call(arguments,1),
-consoleInfo = function consoleInfo(fname){
-		var endTime = (new Date()).getTime(),
-		longness = endTime-startTime;		
-		!fname ? fname = 'anonymous' : {};
-		longness >= fastAccessTimeConstants.VISIBLE_DELAY ? console.warn('Function "'+fname+'" was being performed during '+longness+' ms. Maybe it\'s too long!') : console.info('Function "'+fname+'" was being performed during '+longness+' ms. I think it\'s quite normal');
+me=this,
+cnslProfile = !console.profile ? ( !console.time ? {'start': console.log, 'end': console.log} : {'start': console.time, 'end': console.timeEnd} ) : {'start': console.profile, 'end': console.profileEnd},
+consoleInfo = function consoleInfo(fname){		
+		fname = !fname ? 'anonymous' : fname;
+		cnslProfile['end'].call(console,fname);
 },
 result;
 context = context || global;
 if((typeof args==='undefined') || (args.length===0))
 {
-	result = this.call(context);
-	consoleInfo(this.name);
+	cnslProfile['start'].call(console,me.name);
+	result = me.call(context);
+	consoleInfo(me.name);
 	return result;
 };
 
-result = this.apply(context, args);
-consoleInfo(this.name);
+result = me.apply(context, args);
+consoleInfo(me.name);
 return result;
 
 }
