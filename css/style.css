@@ -378,6 +378,12 @@ perspective:0 !important;
 	content: ' 'url('../images/enaza.png');
 }
 
+#about-me>#experience>article>ul>li:nth-child(3)>h3:after
+{
+	content: ' 'url('../images/alternativa.png');
+	vertical-align: -15px;
+}
+
 @font-face {
 	font-family: 'GillSansLight';
 	src: url('../fonts/GillSans-Light.ttf');
